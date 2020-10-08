@@ -12,7 +12,10 @@
 
   <body>
     <header class="header">
+      <%= link_to root_path do %>
         <p class="header_pageTitle">Instagram</p>
+      <% end %>
+
         <div class="header_likes">
           <%= image_tag 'heart.svg', class: 'header_avatar_likes' %>
         </div>
