@@ -16,6 +16,8 @@ $avatar-size: 32px;
 
   &_heart {
     display: flex;
+    margin-top: 16px;
+
 
     img {
       width: $heart-size;
@@ -36,6 +38,7 @@ $avatar-size: 32px;
     cursor: pointer;
     display: flex;
     font-size: 10px;
+    margin-bottom: 11px;
 
     img {
       width: $avatar-size;
@@ -46,7 +49,7 @@ $avatar-size: 32px;
   }
 
   &_content {
-    padding: 16px 16px;
+    padding: 16px 10px;
   }
 
   &_image {
