@@ -12,6 +12,7 @@
   <% @articles.each do |article| %>
     <%= link_to article_path(id: article.id) do %>
       <div class="card">
+        <div class="card_content">
           <div class="card_detail">
                 <%= image_tag 'default-avatar.png' %>
                 <div>
@@ -19,7 +20,6 @@
                   <p>2020/4/16</p>
                 </div>
             </div>
-            <div class="card_content">
               <div class="card_image">
                 <%= image_tag 'nils.jpg' %>
               </div>
@@ -27,14 +27,17 @@
                 <%= image_tag 'heart.svg' %>
                 <span>23</span>
               </div>
-              <div class="card_content">
                   <%= article.content %>
-                </div>
+            </div>
         </div>
     <% end %>
   <% end %>
 
-   
+   <%= link_to new_article_path do %>
+    <div class="float_btn">
+     <div class="POST">POST</div>
+    </div>
+  <% end %>
     
   </div>
 
