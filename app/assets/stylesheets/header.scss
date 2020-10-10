@@ -6,9 +6,10 @@ $header-padding-y: 16px;
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: $primary-color;
+  background-color: white;
   padding: $header-padding-y 16px;
   font-weight: bold;
+  
 
   &_pageTitle {
     color: black;
