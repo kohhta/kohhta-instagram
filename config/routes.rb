@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   resource :profile, only: [:show, :edit, :update]
 
-  resources :articles, only: [:show, :new]
+  resources :articles, only: [:show, :new, :create]
 
 end
