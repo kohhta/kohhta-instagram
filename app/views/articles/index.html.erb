@@ -26,8 +26,15 @@
               <div class="card_heart">
                 <%= image_tag 'heart.svg' %>
                 <span>23</span>
+               <%= link_to article_path(id: article.id) do %>
+                <%= image_tag 'Vector.png' %>
+              <% end %>
+              
+              <%= link_to image_tag('Share.png', :class => "card_heart_img"),  "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank'  %>
+
               </div>
-                  <%= article.content %>
+
+              <%= article.content %>
             </div>
         </div>
     <% end %>
