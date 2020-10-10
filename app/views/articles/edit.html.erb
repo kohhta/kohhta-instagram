@@ -1,0 +1,16 @@
+<div class="container">
+  <ul>
+    <% @article.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <%= form_with(model: @article, url: article_path(@article), method: 'put', local: true) do |f| %>
+    <div>
+      <%= f.label :content, 'Whats on your mind ?' %>
+    </div>
+    <div>
+      <%= f.text_area :content %>
+    </div>
+    <%= f.submit '+ Post', class: 'btn-primary' %>
+  <% end %>
+</div>

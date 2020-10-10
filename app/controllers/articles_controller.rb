@@ -21,6 +21,22 @@ class ArticlesController < ApplicationController
       flash.now[:error] = 'Posting failure'
     end
   end
+
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    if  @article.update(article_params)
+      redirect_to article_path(@article), notice: 'Edit now!!'
+    else
+      render :new
+      flash.now[:error] = 'Edit error...'
+    end
+  end
+  
+  
   
 
   private
