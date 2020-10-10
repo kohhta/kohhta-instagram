@@ -22,11 +22,12 @@ $avatar-size: 32px;
     img {
       width: $heart-size;
       height: $heart-size;
+      margin-left: 8px;
     }
 
     span {
       margin-left: 8px;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: bold;
       color: $primary-color;
       line-height: $heart-size;
