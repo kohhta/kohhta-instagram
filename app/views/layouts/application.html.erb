@@ -14,9 +14,16 @@
 
   <body>
     <header class="header">
-      <%= link_to root_path do %>
-        <p class="header_pageTitle">Instagram</p>
-      <% end %>
+      <div class="header_logos">
+        <% if !current_page?(root_path) %>
+          <%= link_to :back do %>
+            <%= image_tag 'modoru.png', class: 'header_back' %>
+          <% end %>
+        <% end %>
+        <%= link_to root_path do %>
+          <p class="header_pageTitle">Instagram</p>
+        <% end %>
+    </div>
 
         <div class="header_likes">
           <%= image_tag 'heart.svg', class: 'header_avatar_likes' %>
