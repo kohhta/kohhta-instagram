@@ -1,0 +1,34 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Instagram
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %link{:crossorigin => "anonymous", :href => "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+  %body
+    %header.header
+      .header_logos
+        - if !current_page?(root_path)
+          = link_to :back do
+            = image_tag 'modoru.png', class: 'header_back'
+        = link_to root_path do
+          %p.header_pageTitle Instagram
+      .header_likes
+        = image_tag 'heart.svg', class: 'header_avatar_likes'
+      .dropdown
+        = image_tag 'default-avatar.png', class: 'header_avatar dropbtn'
+        .dropdown-content
+          - if user_signed_in?
+            = link_to 'profile', profile_path
+            = link_to 'logout', destroy_user_session_path, data: { method: 'delete' }
+          - else
+            = link_to 'login', new_user_session_path, class: 'header_loginBtn'
+    - if flash.present?
+      .flash
+        - flash.each do |key, value|
+          %div{:class => key}= value
+    = yield
