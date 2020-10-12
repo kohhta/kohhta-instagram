@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
 
   def index
-    @articles = Article.all
+    @articles = Article.all.order(:id)
   end
 
   def show
@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = Article.new(article_params) 
     if @article.save
       redirect_to article_path(@article), notice: 'Post now!!'
     else
