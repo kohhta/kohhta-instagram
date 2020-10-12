@@ -15,4 +15,8 @@
 #
 class Profifle < ApplicationRecord
   belongs_to :user
+
+  def nick_name
+    user.display_name
+  end
 end

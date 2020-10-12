@@ -3,7 +3,6 @@ class ProfilesController < ApplicationController
   # ログインしてないとできない
 
   def show
-    
   end
 
   def edit
