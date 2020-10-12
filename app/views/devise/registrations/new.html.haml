@@ -1,0 +1,26 @@
+= image_tag 'user_image.jpg', class: 'user_image'
+%h2 新規登録
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  .field
+    = f.label :Email
+    %br/
+    = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+  .field
+    = f.label :ユーザーネーム
+    %br/
+    = f.text_field :username, class: "form-control"
+  .field
+    = f.label :password
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length}文字以上)
+    %br/
+    = f.password_field :password, autocomplete: "off", class: "form-control"
+  .field
+    = f.label :Password再入力
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
+  .actions
+    = f.submit "登録", class: "btn-secondary"
+= render "devise/shared/links"

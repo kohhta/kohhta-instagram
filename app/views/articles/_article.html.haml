@@ -1,0 +1,17 @@
+= link_to article_path(id: article.id) do
+  .card
+    .card_content
+      .card_detail
+        = image_tag 'default-avatar.png'
+        %div
+          %p cohki0305
+          %p= article.display_created_at
+      .card_image
+        = image_tag 'nils.jpg'
+      .card_heart
+        = image_tag 'heart.svg'
+        %span 23
+        = link_to article_path(id: article.id) do
+          = image_tag 'Vector.png'
+        = link_to image_tag('Share.png', :class => "card_heart_img"),  "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank'
+      = article.content

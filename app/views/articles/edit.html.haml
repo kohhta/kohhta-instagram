@@ -1,0 +1,10 @@
+.container
+  %ul
+    - @article.errors.full_messages.each do |message|
+      %li= message
+  = form_with(model: @article, url: article_path(@article), method: 'put', local: true) do |f|
+    %div
+      = f.label :content, 'Whats on your mind ?'
+    %div
+      = f.text_area :content
+    = f.submit '+ Post', class: 'btn-primary'

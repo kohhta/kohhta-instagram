@@ -89,12 +89,27 @@ GEM
     devise-i18n (1.9.2)
       devise (>= 4.7.1)
     devise-i18n-views (0.3.7)
+    erb2haml (0.1.5)
+      html2haml
     erubi (1.9.0)
+    erubis (2.7.0)
     faker (2.13.0)
       i18n (>= 1.6, < 2)
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    haml (5.1.2)
+      temple (>= 0.8.0)
+      tilt
+    hamlit (2.11.0)
+      temple (>= 0.8.2)
+      thor
+      tilt
+    html2haml (2.2.0)
+      erubis (~> 2.7.0)
+      haml (>= 4.0, < 6)
+      nokogiri (>= 1.6.0)
+      ruby_parser (~> 3.5)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
@@ -189,6 +204,8 @@ GEM
       rack (>= 1.1)
       rubocop (>= 0.87.0)
     ruby-progressbar (1.10.1)
+    ruby_parser (3.14.2)
+      sexp_processor (~> 4.9)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -203,6 +220,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sexp_processor (4.15.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -214,6 +232,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -256,7 +275,9 @@ DEPENDENCIES
   devise
   devise-i18n
   devise-i18n-views
+  erb2haml
   faker
+  hamlit
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
