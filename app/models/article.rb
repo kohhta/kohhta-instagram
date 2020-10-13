@@ -15,6 +15,7 @@
 class Article < ApplicationRecord
   validates :content, presence: true
 
+  has_many :comments, dependent: :destroy
   belongs_to :user
 
   def display_created_at
