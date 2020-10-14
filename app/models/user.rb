@@ -37,5 +37,9 @@ class User < ApplicationRecord
   def display_name
     self.username
   end
+
+  def prepare_profile
+    profile || build_profile
+  end
   
 end
