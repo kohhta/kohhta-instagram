@@ -9,3 +9,7 @@
         aaaaaaaaaaaaaaaa
       = image_tag 'default-avatar.png'
 = link_to 'home', root_path
+
+- current_user.articles.each do |article|
+    = render 'commons/article', article: article
+
