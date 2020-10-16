@@ -25,15 +25,29 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :profile, dependent: :destroy
+  # has_one :profile, dependent: :destroy
   has_many :articles, dependent: :destroy
+  has_one :profile, dependent: :destroy
+
   
   def has_written?(article)
     articles.exists?(id: article.id)
   end
 
   def display_name
-    self.username
+    profile&.nickname || self.username
+  end
+
+  def avatar_image
+    if profile&.avatar&.attached?
+      profile.avatar
+    else
+      'default-avatar.png'
+    end
+  end
+
+  def prepare_profile
+    profile || build_profile
   end
   
 end

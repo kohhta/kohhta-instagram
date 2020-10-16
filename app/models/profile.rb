@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: profifles
+# Table name: profiles
 #
 #  id           :bigint           not null, primary key
 #  introduction :text
@@ -11,12 +11,11 @@
 #
 # Indexes
 #
-#  index_profifles_on_user_id  (user_id)
+#  index_profiles_on_user_id  (user_id)
 #
-class Profifle < ApplicationRecord
+class Profile < ApplicationRecord
   belongs_to :user
+  has_one_attached :avatar
+  
 
-  def nick_name
-    user.display_name
-  end
 end
