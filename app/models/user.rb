@@ -38,6 +38,14 @@ class User < ApplicationRecord
     profile&.nickname || self.username
   end
 
+  def avatar_image
+    if profile&.avatar&.attached?
+      profile.avatar
+    else
+      'default-avatar.png'
+    end
+  end
+
   def prepare_profile
     profile || build_profile
   end

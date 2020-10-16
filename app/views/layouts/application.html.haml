@@ -20,7 +20,7 @@
       .header_likes
         = image_tag 'heart.svg', class: 'header_avatar_likes'
       .dropdown
-        = image_tag 'default-avatar.png', class: 'header_avatar dropbtn'
+        = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
         .dropdown-content
           - if user_signed_in?
             = link_to 'profile', profile_path
