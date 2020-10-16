@@ -1,12 +1,12 @@
 .container.profilePage
   .profilePage_user
     .profilePage_user_name
-      = current_user.username
+      = current_user.display_name
     .profilePage_user_image
       .profilePage_user_actionButton
         = link_to 'Edit', edit_profile_path
       .profilePage_user_introduction
-        aaaaaaaaaaaaaaaa
+        = current_user.profile&.introduction
       = image_tag 'default-avatar.png'
 = link_to 'home', root_path
 
