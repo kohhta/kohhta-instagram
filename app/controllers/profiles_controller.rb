@@ -31,6 +31,6 @@ class ProfilesController < ApplicationController
       :nickname,
       :introduction,
       :avatar
-    )
+        )
   end
 end
