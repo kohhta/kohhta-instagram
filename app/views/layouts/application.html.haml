@@ -18,7 +18,8 @@
         = link_to root_path do
           %p.header_pageTitle Instagram
       .header_likes
-        = image_tag 'heart.svg', class: 'header_avatar_likes'
+        = link_to favorites_path do
+          = image_tag 'heart.svg', class: 'header_avatar_likes'
       - if user_signed_in?
         .dropdown
           = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
