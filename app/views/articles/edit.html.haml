@@ -4,6 +4,10 @@
       %li= message
   = form_with(model: @article, url: article_path(@article), method: 'put', local: true) do |f|
     %div
+      = f.label :eyecatch, 'アイキャッチ'
+    %div
+      = f.file_field :eyecatch
+    %div
       = f.label :content, 'Whats on your mind ?'
     %div
       = f.text_area :content

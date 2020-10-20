@@ -6,8 +6,9 @@
         %div
           %p= article.author_name
           %p= article.display_created_at
-      .card_image
-        = image_tag 'nils.jpg'
+      - if article.eyecatch.attached?
+        .card_image
+          = image_tag article.eyecatch
       .card_heart
         = image_tag 'heart.svg'
         %span= article.like_count

@@ -12,8 +12,9 @@
           = link_to '編集する', edit_article_path(@article)
           = link_to '削除する', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか？' }
   .card_content
+  - if @article.eyecatch.attached?
     .card_image
-      = image_tag 'nils.jpg'
+      = image_tag @article.eyecatch
     - if user_signed_in?
       - if current_user.has_liked?(@article)
         .card_heart
