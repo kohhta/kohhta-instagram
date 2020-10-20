@@ -27,6 +27,9 @@ class User < ApplicationRecord
 
   # has_one :profile, dependent: :destroy
   has_many :articles, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :favorite_articles, through: :likes, source: :article
+
   has_one :profile, dependent: :destroy
 
   
@@ -34,8 +37,17 @@ class User < ApplicationRecord
     articles.exists?(id: article.id)
   end
 
+  def has_liked?(article)
+    likes.exists?(article_id: article.id)
+  end
+  
+
   def display_name
     profile&.nickname || self.username
+  end
+
+  def prepare_profile
+    profile || build_profile
   end
 
   def avatar_image
@@ -44,10 +56,6 @@ class User < ApplicationRecord
     else
       'default-avatar.png'
     end
-  end
-
-  def prepare_profile
-    profile || build_profile
   end
   
 end

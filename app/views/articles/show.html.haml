@@ -12,12 +12,22 @@
           = link_to '編集する', edit_article_path(@article)
           = link_to '削除する', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか？' }
   .card_content
+  - if @article.eyecatch.attached?
     .card_image
-      = image_tag 'nils.jpg'
-    .card_heart
-      = image_tag 'heart.svg'
-      %span 23
-      = link_to image_tag('Share.png', :class => "card_heart_img"),  "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank'
+      = image_tag @article.eyecatch
+    - if user_signed_in?
+      - if current_user.has_liked?(@article)
+        .card_heart
+        = link_to article_like_path(@article), data: { method: 'delete' } do
+          = image_tag 'heart-active.svg'
+        %span= @article.like_count
+        = link_to image_tag('Share.png', :class => "card_heart_img"),  "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank'
+      - else 
+        .article_heart
+        = link_to article_like_path(@article), data: { method: 'post' } do
+          = image_tag 'heart.svg'
+        %span= @article.like_count
+        = link_to image_tag('Share.png', :class => "card_heart_img"),  "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank'
     .card_content
       = @article.content
 
