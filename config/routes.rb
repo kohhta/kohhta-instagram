@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   root to: 'articles#index'
 
+  resource :timeline, only: [:show]
+  #ひとり１つしかないので
+
   resource :profile, only: [:show, :edit, :update]
 
   resources :articles do
