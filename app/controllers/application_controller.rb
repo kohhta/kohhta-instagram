@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def current_user
+    ActiveDecorator::Decorator.instance.decorate(super) if super.present?
+    super
+  end
+
   def configure_permitted_parameters
     added_attrs = [ :email, :username, :password, :password_confirmation ]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
