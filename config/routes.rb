@@ -11,7 +11,10 @@ Rails.application.routes.draw do
       resource :like, only: [:create, :destroy]
   end
 
-  resources :accounts, only: [:show]
+  resources :accounts, only: [:show] do 
+    resources :follows, only: [:create]
+    resources :unfollows, only: [:create]
+  end
 
   resources :favorites, only: [:index]  
 
