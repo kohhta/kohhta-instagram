@@ -1,0 +1,18 @@
+.container.profilePage
+  .profilePage_user
+    .profilePage_user_name
+      = user.display_name
+    .profilePage_user_image
+      .profilePage_user_actionButton
+        - if user == current_user
+          = link_to 'Edit', edit_profile_path
+        - else 
+          = link_to 'Follow', '#'
+      .profilePage_user_introduction
+        = user.profile&.introduction
+      = image_tag user.avatar_image
+= link_to 'home', root_path
+
+- user.articles.each do |article|
+  = render 'commons/article', article: article
+
