@@ -1,4 +1,4 @@
-.card
+.card#article-show{data: {article_id: @article.id}}
   .card_detail
     = link_to account_path(@article.user) do
       = image_tag @article.user.avatar_image
