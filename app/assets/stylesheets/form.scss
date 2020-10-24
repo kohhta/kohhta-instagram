@@ -13,4 +13,7 @@ textarea {
   min-height: 34px;
   // resize: vertical;
   border: 1px solid #EBEBEB;
+  &.sm {
+    min-height: 50px;
+  }
 }
