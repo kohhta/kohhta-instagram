@@ -13,9 +13,12 @@
           = link_to '編集する', edit_article_path(@article)
           = link_to '削除する', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか？' }
   .card_content
-  - if @article.eyecatch.attached?
-    .card_image
-      = image_tag @article.eyecatch
+    - if @article.eyecatch.attached?
+      .card_image
+        = image_tag @article.eyecatch
+    - if @article.images.attached?
+      .card_image
+        = image_tag @article.images
     - if user_signed_in?
       .card_heart.hidden.active-heart
         = image_tag 'heart-active.svg'

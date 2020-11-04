@@ -9,6 +9,9 @@
       - if article.eyecatch.attached?
         .card_image
           = image_tag article.eyecatch
+      - if article.images.attached?
+        .card_image
+          = image_tag article.images
       .card_heart
         = image_tag 'heart.svg'
         %span= article.like_count

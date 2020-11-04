@@ -4,9 +4,13 @@
       %li= message
   = form_with(model: @article, url: articles_path, method: 'post', local: true) do |f|
     %div
-      = f.label :eyecatch, 'アイキャッチ'
+      = f.label :eyecatch, '投稿画像'
     %div
       = f.file_field :eyecatch
+    %div
+      = f.label :images, 'サブ投稿'
+    %div
+      = f.file_field :images
     %div
       = f.label :content, 'Whats on your mind ?'
     %div

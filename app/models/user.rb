@@ -66,8 +66,6 @@ class User < ApplicationRecord
     profile || build_profile
   end
 
-
-
   private
   def get_user_id(user)
     if user. is_a?(User)
