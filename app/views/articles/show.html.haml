@@ -32,7 +32,7 @@
 .article
   %h2 コメント一覧
   .comments-container
-
+  
 .container
   .btn-secondary.show-comment-form
     コメントを追加
@@ -40,5 +40,17 @@
     = text_area_tag :comment_content, ' ', class: 'sm'
     .btn-secondary.add-comment-button
       コメントを追加
+
+.article
+  %h2 コメント一覧
+  - @comments.each do |comment|
+    .article_comment
+      .article_comment_image
+        = image_tag comment.user.avatar_image
+        @
+        = comment.user.username
+        = comment.content
+
+
 
 = javascript_pack_tag 'article'
