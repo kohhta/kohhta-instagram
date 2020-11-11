@@ -23,12 +23,10 @@ $avatar-size: 32px;
   }
 
   &_comment_image {
-    img {
-      width: $avatar-size;
       height: $avatar-size;
       border-radius: 100%;
       margin-right: 16px;
-    }
+    
   }
 
   &_detail {

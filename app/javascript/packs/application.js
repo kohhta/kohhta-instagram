@@ -23,6 +23,9 @@ axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+
+// プロフィールのアバター画像変更
+
 document.addEventListener('DOMContentLoaded', () => {
   const reader = new FileReader();
   const imageUpload = document.getElementById("post_img");
