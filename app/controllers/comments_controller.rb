@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     @comment.save!
     render json: @comment
   end
-
+  
   private
   def comment_params
     params.require(:comment).permit(:content)
