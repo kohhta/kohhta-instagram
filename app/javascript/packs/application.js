@@ -67,11 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const dataset = $('#account-show').data()
   const accountId = dataset.accountId
-
-  axios.get(`/accounts/${accountId}/follows`)
-  .then((response) => {
-    console.log(response)
-  })
+  const userId = dataset.userId
+  
+  axios.get(`/accounts/${accountId}/follows/${userId}`)
+    .then((response) => {
+      console.log(response)
+    })
 
 
   })

@@ -1,20 +1,21 @@
-.container.profilePager
-  .profilePage_user
-    .profilePage_user_name
-      @
-      = user.username
-    .profilePage_user_image
-      .profilePage_user_actionButton
-        - if user == current_user
-          = link_to 'Edit', edit_profile_path
-        - else 
-          - if current_user&.has_followed?(user)
-            = link_to 'フォロー中', account_unfollows_path(user), data: {method: 'post'}
+.container
+  .profilePager
+    .profilePage_user
+      .profilePage_user_name
+        @
+        = user.username
+      .profilePage_user_image
+        .profilePage_user_actionButton
+          - if user == current_user
+            = link_to 'Edit', edit_profile_path
           - else 
-            = link_to 'フォローする', account_follows_path(user), data: {method: 'post'}
-      = user.display_name
-      .profilePage_user_introduction
-        = user.profile&.introduction
+            - if current_user&.has_followed?(user)
+              = link_to 'フォロー中', account_unfollows_path(user), data: {method: 'post'}
+            - else 
+              = link_to 'フォローする', account_follows_path(user), data: {method: 'post'}
+        = user.display_name
+        .profilePage_user_introduction
+          = user.profile&.introduction
 
 = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
 
