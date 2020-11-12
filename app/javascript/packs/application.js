@@ -60,3 +60,65 @@ $('.avatar_present_img').on('click', () => {
   $('#post_img').click()
 })
 });
+
+// フォロー非同期
+
+const handleFollowDisplay = (hasFollow) => {
+  if (hasFollow) {
+    $('.following').removeClass('hidden')
+  } else {
+    $('.follow').removeClass('hidden')
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const dataset = $('#account-show').data()
+  const accountId = dataset.accountId
+  const userId = dataset.userId
+  axios.get(`/accounts/${accountId}/follows/${userId}`)
+    .then((response) => {
+      const hasFollow = response.data.hasFollow
+      handleFollowDisplay(hasFollow)
+    })
+
+    $(`.follow`).on('click', () => {
+      axios.post(`/accounts/${accountId}/follows`)
+        .then((response) => {
+          if (response.data.status === 'ok') {
+            $('.following').removeClass('hidden')
+            $('.follow').addClass('hidden')
+            const followerCount = $(`#follower_count`).text()
+            const numFollowerCount = parseInt(followerCount)
+            $(`#follower_count`).text(numFollowerCount + 1)
+        }
+      })
+      .catch((error) => {
+        window.alert('Error')
+        console.log(error)
+      })
+    })
+
+    $(`.following`).on('click', () => {
+      axios.post(`/accounts/${accountId}/unfollows`)
+      .then((response) => {
+
+        if (response.data.status === 'ok') {
+          $('.following').addClass('hidden')
+          $('.follow').removeClass('hidden')
+          const followerCount = $(`#follower_count`).text()
+          const numFollowerCount = parseInt(followerCount)
+          $(`#follower_count`).text(numFollowerCount - 1)
+      }
+        
+
+      })
+      .catch((error) => {
+        window.alert('Error')
+        console.log(error)
+      })
+    })
+
+
+
+
+  })
