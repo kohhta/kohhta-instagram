@@ -20,19 +20,34 @@
           = user.profile&.introduction
 
 = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
-
   .circle-avatar
     %img#avatar_img_prev.hidden{:src => "#"}
-
       - if current_user.persisted? && current_user.avatar_image
         = image_tag user.avatar_image, class: 'avatar_present_img'
-          
       - else
         = image_tag 'default-avatar.png', class: 'avatar_present_img'
-          
         = f.hidden_field :avatar_cache
       = f.file_field :avatar, id: 'post_img'
       = f.submit '保存',id: 'post_btn'
+
+  .profilePage_value
+    .profilePage_value_posts
+      .profilePage_value_posts_count
+        %p=user.articles.count
+      .profilePage_value_posts_text
+        %p Posts
+    .profilePage_value_followers
+      .profilePage_value_followers_count
+        %p= user.follower_count
+      .profilePage_value_followers_text
+        %p Followers
+    .profilePage_value_following
+      .profilePage_value_following_count
+        %p= user.following_count
+      .profilePage_value_following_text
+        %p Following
+
+
 
 - user.articles.each do |article|
   = render 'commons/article', article: article
