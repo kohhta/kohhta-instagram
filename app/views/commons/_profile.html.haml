@@ -8,13 +8,12 @@
         .profilePage_user_actionButton
           - if user == current_user
             = link_to 'Edit', edit_profile_path
-          - else 
-            - if current_user&.has_followed?(user)
-              .profilePage_followbtn_following.following.hidden
-                %p Following
-            - else 
-              .profilePage_followbtn_follow.follow.hidden
-                %p Follow
+        
+        .profilePage_followbtn
+          .profilePage_followbtn_following.following.hidden
+            フォロー中
+          .profilePage_followbtn_follow.follow.hidden
+            フォローする
         = user.display_name
         .profilePage_user_introduction
           = user.profile&.introduction
@@ -35,17 +34,17 @@
       .profilePage_value_posts_count
         %p=user.articles.count
       .profilePage_value_posts_text
-        %p Posts
+        投稿
     .profilePage_value_followers
-      .profilePage_value_followers_count
+      .profilePage_value_followers_count#follower_count
         %p= user.follower_count
       .profilePage_value_followers_text
-        %p Followers
+        フォロワー
     .profilePage_value_following
       .profilePage_value_following_count
         %p= user.following_count
       .profilePage_value_following_text
-        %p Following
+        フォロー中
 
 
 

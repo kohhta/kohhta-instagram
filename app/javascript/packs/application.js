@@ -79,9 +79,43 @@ document.addEventListener('DOMContentLoaded', () => {
     .then((response) => {
       const hasFollow = response.data.hasFollow
       handleFollowDisplay(hasFollow)
+    })
 
+    $(`.follow`).on('click', () => {
+      axios.post(`/accounts/${accountId}/follows`)
+        .then((response) => {
+          if (response.data.status === 'ok') {
+            $('.following').removeClass('hidden')
+            $('.follow').addClass('hidden')
+            const followerCount = $(`#follower_count`).text()
+            const numFollowerCount = parseInt(followerCount)
+            $(`#follower_count`).text(numFollowerCount + 1)
+        }
+      })
+      .catch((error) => {
+        window.alert('Error')
+        console.log(error)
+      })
+    })
 
-      
+    $(`.following`).on('click', () => {
+      axios.post(`/accounts/${accountId}/unfollows`)
+      .then((response) => {
+
+        if (response.data.status === 'ok') {
+          $('.following').addClass('hidden')
+          $('.follow').removeClass('hidden')
+          const followerCount = $(`#follower_count`).text()
+          const numFollowerCount = parseInt(followerCount)
+          $(`#follower_count`).text(numFollowerCount - 1)
+      }
+        
+
+      })
+      .catch((error) => {
+        window.alert('Error')
+        console.log(error)
+      })
     })
 
 
