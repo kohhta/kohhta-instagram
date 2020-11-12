@@ -60,3 +60,18 @@ $('.avatar_present_img').on('click', () => {
   $('#post_img').click()
 })
 });
+
+// フォロー非同期
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const dataset = $('#account-show').data()
+  const accountId = dataset.accountId
+
+  axios.get(`/accounts/${accountId}/follows`)
+  .then((response) => {
+    console.log(response)
+  })
+
+
+  })
