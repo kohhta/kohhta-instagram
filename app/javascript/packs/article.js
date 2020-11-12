@@ -23,12 +23,20 @@ const handleCommentForm = () => {
   })
 }
 
+// コメント追加内容
+
 const appendNewComment = (comment) => {
   $('.comments-container').append(
-    `<div class="article_comment"><p>${comment.content}</p></div>`
+    `<div class="article_comment">
+      <div class="article_comment_image">
+        <img class='article_comment_image' src='${comment.user.avatar_image}'>
+      </div>
+        <p>@${comment.user.username}${comment.content}</p>
+      </div>`
   )
-}
+  }
 
+// 非同期コメント処理
 
 document.addEventListener('DOMContentLoaded', () => {
   const dataset = $('#article-show').data()
