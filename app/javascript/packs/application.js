@@ -63,6 +63,14 @@ $('.avatar_present_img').on('click', () => {
 
 // フォロー非同期
 
+const handleFollowDisplay = (hasFollow) => {
+  if (hasFollow) {
+    $('.following').removeClass('hidden')
+  } else {
+    $('.follow').removeClass('hidden')
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const dataset = $('#account-show').data()
   const accountId = dataset.accountId
@@ -70,12 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
   axios.get(`/accounts/${accountId}/follows/${userId}`)
     .then((response) => {
       const hasFollow = response.data.hasFollow
-      if (hasFollow) {
-        $('.following').removeClass('hidden')
-      } else {
-        $('.follow').removeClass('hidden')
-      }
+      handleFollowDisplay(hasFollow)
+
+
+      
     })
+
+
 
 
   })

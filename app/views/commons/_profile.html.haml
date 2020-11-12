@@ -11,10 +11,10 @@
           - else 
             - if current_user&.has_followed?(user)
               .profilePage_followbtn_following.following.hidden
-                = link_to 'フォロー中', account_unfollows_path(user), data: {method: 'post'}
+                %p Following
             - else 
               .profilePage_followbtn_follow.follow.hidden
-                = link_to 'フォローする', account_follows_path(user), data: {method: 'post'}
+                %p Follow
         = user.display_name
         .profilePage_user_introduction
           = user.profile&.introduction
