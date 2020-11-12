@@ -64,14 +64,17 @@ $('.avatar_present_img').on('click', () => {
 // フォロー非同期
 
 document.addEventListener('DOMContentLoaded', () => {
-
   const dataset = $('#account-show').data()
   const accountId = dataset.accountId
   const userId = dataset.userId
-  
   axios.get(`/accounts/${accountId}/follows/${userId}`)
     .then((response) => {
-      console.log(response)
+      const hasFollow = response.data.hasFollow
+      if (hasFollow) {
+        $('.following').removeClass('hidden')
+      } else {
+        $('.follow').removeClass('hidden')
+      }
     })
 
 

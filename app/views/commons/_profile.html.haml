@@ -10,9 +10,11 @@
             = link_to 'Edit', edit_profile_path
           - else 
             - if current_user&.has_followed?(user)
-              = link_to 'フォロー中', account_unfollows_path(user), data: {method: 'post'}
+              .profilePage_followbtn_following.following.hidden
+                = link_to 'フォロー中', account_unfollows_path(user), data: {method: 'post'}
             - else 
-              = link_to 'フォローする', account_follows_path(user), data: {method: 'post'}
+              .profilePage_followbtn_follow.follow.hidden
+                = link_to 'フォローする', account_follows_path(user), data: {method: 'post'}
         = user.display_name
         .profilePage_user_introduction
           = user.profile&.introduction
