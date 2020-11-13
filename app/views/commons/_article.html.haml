@@ -9,10 +9,12 @@
           %p= article.display_created_at
       - if article.eyecatch.attached?
         .card_image
-          = image_tag article.eyecatch
+          = link_to article_path(id: article.id) do
+            = image_tag article.eyecatch
       - if article.images.attached?
         .card_image
-          = image_tag article.images
+          = link_to article_path(id: article.id) do
+            = image_tag article.images
       .card_heart
         = image_tag 'heart.svg'
         %span= article.like_count
