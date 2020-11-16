@@ -1,0 +1,9 @@
+.container
+  .follow
+    %h2 フォロワー 
+  - @followers.each do |follower|
+    = link_to account_path(follower.id) do
+      .follow_detail
+        = image_tag follower.avatar_image
+        .follow_name
+          = follower.username

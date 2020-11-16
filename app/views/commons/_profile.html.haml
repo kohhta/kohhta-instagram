@@ -35,16 +35,20 @@
         %p=user.articles.count
       .profilePage_value_posts_text
         投稿
-    .profilePage_value_followers
-      .profilePage_value_followers_count#follower_count
-        %p= user.follower_count
-      .profilePage_value_followers_text
-        フォロワー
-    .profilePage_value_following
-      .profilePage_value_following_count
-        %p= user.following_count
-      .profilePage_value_following_text
-        フォロー中
+
+    = link_to  account_follows_path(user) do
+      .profilePage_value_followers
+        .profilePage_value_followers_count#follower_count
+          %p= user.follower_count
+        .profilePage_value_followers_text
+          フォロワー
+        
+    = link_to account_followings_path(user) do
+      .profilePage_value_following
+        .profilePage_value_following_count
+          %p= user.following_count
+        .profilePage_value_following_text
+          フォロー中
 
 
 

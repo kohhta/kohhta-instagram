@@ -1,0 +1,37 @@
+@import './variables';
+
+$avatar-size: 50px;
+
+.follow {
+  padding-bottom: 30px;
+
+  h2 {
+    text-align: center;
+    color: #333A42;
+  }
+
+  &_detail {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    position: relative;
+    padding: 10px 32px 10px 32px;
+    font-weight: bold;
+    border-bottom: solid 1px white;
+
+
+
+    img {
+      cursor: pointer;
+      width: $avatar-size;
+      height: $avatar-size;
+      border-radius: 100%;
+    }
+  }
+
+  &_name {
+    cursor: pointer;
+    padding-left: 14px;
+    font-size: 16px;
+  }
+}
