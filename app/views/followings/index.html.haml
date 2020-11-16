@@ -1,1 +1,8 @@
-following
+.container
+  .follow
+    %h2 フォロー中
+  - @followings.each do |following|
+    .follow_detail
+      = image_tag following.avatar_image
+      .follow_name
+        = following.username
