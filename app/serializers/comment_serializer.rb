@@ -15,5 +15,7 @@
 #  index_comments_on_user_id     (user_id)
 #
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :content, :user
+  attributes :id, :user, :content
+  belongs_to :user
+  belongs_to :profile
 end

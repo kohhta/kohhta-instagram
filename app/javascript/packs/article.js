@@ -31,7 +31,7 @@ const appendNewComment = (comment) => {
     <div class="article_comment_image">
       <img class='article_comment_image' src='${comment.user.avatar_image}'>
     </div>
-      <p>@${comment.user.username}</p>
+      <p>@${comment.user.display_name}</p>
       <p>${comment.content}</p>
     </div>`
 
@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   axios.get(`/articles/${articleId}/comments`)
     .then((response) => {
+      debugger
       const comments = response.data
       comments.forEach((comment) => {
         appendNewComment(comment)
