@@ -47,7 +47,7 @@
     .article_comment
       .article_comment_image
         = image_tag comment.user.avatar_image, class: 'article_comment_image'
-      = comment.user.username
+      = comment.user.display_name
       = comment.content
 
 

@@ -40,6 +40,8 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
 
+
+
   
   def has_written?(article)
     articles.exists?(id: article.id)
@@ -79,9 +81,19 @@ class User < ApplicationRecord
   def follower_count
     follower_relationships.count
   end
-  
-  
-  
+
+  def avatar_image
+    if profile&.avatar&.attached?
+      profile.avatar
+    else
+      'default-avatar.png'
+    end
+  end
+
+  def display_name
+    profile&.nickname || self.username
+  end
+
 
   private
   def get_user_id(user)
