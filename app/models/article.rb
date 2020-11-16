@@ -15,6 +15,7 @@
 class Article < ApplicationRecord
   has_one_attached :eyecatch
   has_one_attached :images
+
   
   validates :content, presence: true
 
